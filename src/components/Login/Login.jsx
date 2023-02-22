@@ -35,7 +35,7 @@ function Login() {
           <h3>Login Form</h3> 
           </div>
           <label>Email</label>
-          <input id="input"  maxlength="10" class="form-control"
+          <input id="input" maxlength="40" class="form-control"
             type="email"
             className="form-control"
             placeholder="Enter email"
@@ -46,7 +46,7 @@ function Login() {
         {/* Password input field */}
         <div className="form-group">
           <label>Password</label>
-          <input id="input" maxlength="10" class="form-control"
+          <input id="input" maxlength="40" class="form-control"
             type="password"
             className="form-control"
             placeholder="Enter password"
