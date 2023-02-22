@@ -12,7 +12,7 @@ const FirstPage = () => {
         <div id="firstPage" className="col-sm-6 col-md-6 col-lg-6">
           <Shoes/>
         </div>
-        <div id="loginPage" className="col-sm-6 col-md-6 col-lg-6">
+        <div style={{height:"660px"}}className="col-sm-6 col-md-6 col-lg-6">
           <Login/>
         </div>
       </div>

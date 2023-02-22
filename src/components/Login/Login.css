@@ -9,12 +9,20 @@
   font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+/* 
+#loginSignup{
+  height: 200px;
+} */
+
+#loginButton{
+  margin-top: .5rem;
 }
 
-
-
-#input{
-  width: 320px;
-  height: 30px;;
+.form-group{
+  width: 350px;
 }
+#register{
+margin-left: 10rem;
+}
+

@@ -9,7 +9,8 @@ const Shoes = () => {
         <div id="borderremove" className="card card--19 container-fluid">
           <div className="card__header card__header--19">
             {/* tag line with component */}
-            <h1 className="card__title card__will-animate">
+            
+            <h1 id="headerTitle" className="card__title card__will-animate">
               Lets Connect ,Lets Share.
             </h1>
 
