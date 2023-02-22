@@ -1,6 +1,7 @@
 import React from "react";
 import "./Shoes.css";
-
+import LOGO from '../../images/LOGO.PNG';
+import nike199 from '../../images/nike199.png'
 
 const Shoes = () => {
   return (
@@ -10,17 +11,26 @@ const Shoes = () => {
           <div className="card__header card__header--19">
             {/* tag line with component */}
             
-            <h1 id="headerTitle" className="card__title card__will-animate">
-              Lets Connect ,Lets Share.
-            </h1>
+            
+              <div className="card__title card__will-animate">
+                <span>
+                <img id="headerTitle" src={LOGO} alt="logo here" />
+                </span>                
+              </div>
+            
 
-            <span className="card__subtitle card__will-animate">
-              From the upper to the triple-density foam midsole, the
-              Nike Air Zoom Structure 19 Men's Running Shoe offers plenty of
-              support and the response you need for a smooth, stable ride that
-              feels ultra fast.
-            </span>
 
+            <div>
+              {/* <span
+                style={{ fontFamily: "'Mynerve', cursive" }}
+                className="card__subtitle card__will-animate"
+              >
+                From the upper to the triple-density foam midsole, the Nike Air
+                Zoom Structure 19 Men's Running Shoe offers plenty of support
+                and the response you need for a smooth, stable ride that feels
+                ultra fast.
+              </span> */}
+            </div>
           </div>
 
           {/* for shoes image */}
@@ -31,7 +41,6 @@ const Shoes = () => {
               className="card__image card__will-animate"
             />
           </div>
-
         </div>
       </div>
     </div>

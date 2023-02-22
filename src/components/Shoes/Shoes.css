@@ -1,7 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap');
-
-
+/* @import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap'); */
 html,
 body {
   height: 0%;
@@ -12,13 +10,16 @@ body {
   transition: background-color 0.2s;
   will-change: background-color;
 
+  background: #f72648;
+  background: linear-gradient(#f72648, #fccb3c);
+
 } 
 .row{
-  background-color: #d40023;
-  background-image: linear-gradient(#f72648, #fccb3c);
-
+  /* background-color: #d40023;
+  background-image: linear-gradient(#f72648, #fccb3c); */
+/* 
   background: #f72648;
-  background: linear-gradient(#f72648, #fccb3c)
+  background: linear-gradient(#f72648, #fccb3c) */
 }
 #borderremove{
   padding-left: 0px;
@@ -36,7 +37,7 @@ body {
   position: relative;
   margin: 0 auto;
   border-right: 0px;
-  background-color: #fff;
+  background-color: #000000;
   border-radius: 15px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2); */
   transition: left 0.5s ease-out;
@@ -46,11 +47,11 @@ body {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #d40023;
-  background-image: linear-gradient(#f72648, #fccb3c);
+  /* background-color: #d40023;
+  background-image: linear-gradient(#f72648, #fccb3c); */
 
-  background: #f72648;
-  background: linear-gradient(#f72648, #fccb3c)
+  /* background: #f72648;
+  background: linear-gradient(#f72648, #fccb3c) */
 }
 .card--19 {
   top: 25px;
@@ -64,15 +65,15 @@ body {
   padding: 30px 30px 300px;
   /* border-top-right-radius: 15px;
   border-top-left-radius: 15px; */
-  color: #fff;
+  color: #000000;
   border: 0px;
 }
 .card__header--19 {
-  background-color: #d40023;
-  background-image: linear-gradient(#f72648, #fccb3c);
-
+  /* background-color: #d40023;
+  background-image: linear-gradient(#f72648, #fccb3c); */
+/* 
   background: #f72648;
-  background: linear-gradient(#f72648, #fccb3c);
+  background: linear-gradient(#f72648, #fccb3c); */
 }
 .card__title {
   margin: 35px 0 px;
@@ -80,90 +81,212 @@ body {
   line-height: 1.1em;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  display: flex;
+  position: relative;
 }
 .card__subtitle {
-  display: block;
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 200px;
+  display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    top: 5rem;
+    margin-bottom: 200px;
+    position: relative;
+    top: -3rem;
 }
 #headerTitle{
-  color: #fff;
+  color: #000000;
+  font-size: 3rem;
+  position: relative;
+  top: -3rem;
+  width:24rem;
 }
 .card__body {
   position: relative;
-  padding-top:60px;
-  border: 0px;}
-
+  padding-top:59px;
+  border: 0px;
+}
+/* 
+  @media (max-width: 1360px) and (min-width:1230px) {
+    .card__body {
+      position: relative;
+      padding-top:50px;
+      border: 0px;
+    }
+  }   */
+  
 @media (max-width: 1229px) and (min-width:1055px) {
-  .card__body {
-    position: relative;
-    padding-top:59px;
-    border: 0px;
-  }
-}  
-
-@media (max-width: 1056px) and (min-width:1052px) {
   .card__body {
     position: relative;
     padding-top:58px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:23rem;
+  }
+}  
+
+@media (max-width: 1054px) and (min-width:1052px) {
+  .card__body {
+    position: relative;
+    padding-top:57px;
+    border: 0px;
+  }
+  
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:22.5rem;
+  }
 }  
 @media (max-width: 1051px) and (min-width:961px) {
   .card__body {
     position: relative;
-    padding-top:54px;
+    padding-top:55px;
     border: 0px;
+  }
+  
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:22rem;
   }
 }  
 @media (max-width: 961px) and (min-width:941px) {
   .card__body {
     position: relative;
-    padding-top:53px;
+    padding-top:54px;
     border: 0px;
+  }
+  
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:21.5rem;
   }
 }  
 @media (max-width: 940px) and (min-width:935px) {
   .card__body {
     position: relative;
-    padding-top:51.5px;
+    padding-top:53px;
     border: 0px;
   }
+  
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:21rem;
+  }
 }  
-@media (max-width: 935px) and (min-width:789px) {
+
+  @media (max-width: 934px) and (min-width:929px) {
+    .card__body {
+      position: relative;
+      padding-top:52px;
+      border: 0px;
+    }
+    
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:20.5rem;
+  }
+}  
+@media (max-width: 929px) and (min-width:853px) {
   .card__body {
     position: relative;
-    padding-top:50.5px;
+    padding-top:49px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:20rem;
+  }
 }  
-@media (max-width: 788px) and (min-width:680px) {
+@media (max-width: 852px) and (min-width:843px) {
   .card__body {
     position: relative;
     padding-top:48.5px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    font-size: 2.5rem;
+    position: relative;
+    top: -3rem;
+    width:19.5rem;
+  }
 }  
-@media (max-width: 680px) and (min-width:643px) {
+@media (max-width: 843px) and (min-width:732px) {
   .card__body {
     position: relative;
     padding-top:45.5px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    font-size: 2.1rem;
+    position: relative;
+    top: -3rem;
+    width:19rem;
+  }
 }  
-@media (max-width: 642px) and (min-width:613px) {
+@media (max-width: 731px) and (min-width:710px) {
+  .card__body {
+    position: relative;
+    padding-top:42.5px;
+    border: 0px;
+  }
+  #headerTitle{
+    color: #000000;
+    /* font-size: 2.1rem; */
+    position: relative;
+    top: -3rem;
+    width:18.5rem;
+  }
+}  
+@media (max-width: 709px) and (min-width:679px) {
   .card__body {
     position: relative;
     padding-top:41px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    /* font-size: 1.9rem; */
+    position: relative;
+    top: -3rem;
+    width:18rem;
+  }
 }  
-@media (max-width: 612px) and (min-width:585px) {
+@media (max-width: 678px) and (min-width:585px) {
   .card__body {
     position: relative;
-    padding-top:38px;
+    padding-top:40px;
     border: 0px;
+  }
+  #headerTitle{
+    color: #000000;
+    /* font-size: 1.8rem; */
+    position: relative;
+    top: -3rem;
+    width:17.5rem;
   }
 }  
 @media (max-width: 584px) and (min-width:579px) {
@@ -172,12 +295,39 @@ body {
     padding-top:38px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    /* font-size: 1.8rem; */
+    position: relative;
+    top: -3rem;
+    width:17rem;
+  }
 }  
+
 @media (max-width: 579px) and (min-width:576px) {
   .card__body {
     position: relative;
     padding-top:34px;
     border: 0px;
+    
+  }
+  #headerTitle{
+    color: #000000;
+    /* font-size: 1.8rem; */
+    position: relative;
+    top: -3rem;
+    width:16.5rem;
+  }
+} 
+
+
+@media (max-width: 576px) and (min-width:55px) {
+  #headerTitle{
+    color: #000000;
+    /* font-size: 1.8rem; */
+    position: relative;
+    top: -3rem;
+    width:16.5rem;
   }
 } 
 @media (max-width: 536px) and (min-width:500px) {
@@ -186,14 +336,21 @@ body {
     padding-top:54px;
     border: 0px;
   }
+  #headerTitle{
+    color: #000000;
+    /* font-size: 1.8rem; */
+    position: relative;
+    top: -3rem;
+    width:16rem;
+  }
 } 
 
 .card__image {
   z-index: 1;
   position: absolute;
   top: -800%;
-  left: -50px;
-  width: 100%;
+  left: 1rem;
+  width:90%;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;

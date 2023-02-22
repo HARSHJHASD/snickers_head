@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-<style>
-  @import
-  url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-</style>;
 function Login() {
   // Declare state variables for email and password using useState hook
   //state variable for storing login email

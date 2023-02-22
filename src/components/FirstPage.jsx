@@ -7,9 +7,9 @@ import Login from './Login/Login'
 
 const FirstPage = () => {
   return (
-    <div className="container-fluid">
+    <div id="firstPage"  className="container-fluid">
       <div className="row">
-        <div id="firstPage" className="col-sm-6 col-md-6 col-lg-6">
+        <div className="col-sm-6 col-md-6 col-lg-6">
           <Shoes/>
         </div>
         <div style={{height:"660px"}}className="col-sm-6 col-md-6 col-lg-6">
