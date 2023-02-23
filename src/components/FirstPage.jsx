@@ -5,7 +5,7 @@ import Login from './Login/Login'
 
 
 
-const FirstPage = () => {
+const FirstPage = ({setIsAuthenticated}) => {
   return (
     <div id="firstPage"  className="container-fluid">
       <div className="row">
@@ -13,7 +13,7 @@ const FirstPage = () => {
           <Shoes/>
         </div>
         <div style={{height:"660px"}}className="col-sm-6 col-md-6 col-lg-6">
-          <Login/>
+          <Login  setIsAuthenticated={setIsAuthenticated}/>
         </div>
       </div>
     </div>

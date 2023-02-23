@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 //just to handle api
 import axios from "axios";
 
-function Login() {
+function Login({setIsAuthenticated}) {
+
   //using navigate package from "react-router-dom" for sending to other page after login....
   const navigate = useNavigate();
   // Declare state variables for email and password using useState hook...
@@ -80,7 +81,8 @@ function Login() {
       })
       .then((response) => {
         console.log("api me gaya data")
-        console.log(response.data);
+        console.log(response.data.success);
+        setIsAuthenticated(response.data.success);
         navigate("/dashboard");
       })
       .catch((error) => {
@@ -130,7 +132,7 @@ function Login() {
         console.log("api me error aa gaya")
         console.log(error.response.data.message);
         setErrorMessage(error.response.data.message);
-        console.log(errorMessage);
+        
       });
 
     // Log email and password values to console
