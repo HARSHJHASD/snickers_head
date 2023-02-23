@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
+import axios from 'axios';
 function Login() {
   // Declare state variables for email and password using useState hook
   //state variable for storing login email
@@ -18,7 +19,7 @@ function Login() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [nameError,setNameError] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   // Define functions to update(using state) email and password incase of login
   function handleEmailChange(event) {
     event.preventDefault();
@@ -59,24 +60,21 @@ function Login() {
       setErrorEmail("Email is invalid");
       return;
     }
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-    if(!passwordRegex.test(password)){
-      setErrorPassword("Password must be of 8 digit,including 1digit,1 lowercase,1 uppercase letter")
-    }
+    
     if (password.length < 8) {
       setErrorPassword("Password must be at least 8 characters long Atleast.");
       return;
     }
 
-    // //performing login using the axios...
-    // axios.post("http://localhost:3000/login", { email, password })
-    // .then((response) => {
-    //   console.log(response.data);
-    // })
-    // .catch((error) => {
-    //   console.log(error.response.data.message);
-    //   setErrorMessage(error.response.data.message);
-    // });
+    //performing login using the axios...
+    axios.post("https://7c63-49-249-44-114.in.ngrok.io/app/v1/login", { email, password })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error.response.data.message);
+      setErrorMessage(error.response.data.message);
+    });
     // Log email and password values to console
     console.log(`Login Email: ${email}, LoginPassword: ${password}`);
   }
