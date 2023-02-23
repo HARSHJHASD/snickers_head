@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
+//this is necessary to do for routing,after login sending to "/dashboard"
+import { useNavigate } from "react-router-dom";
+//just to handle api
+import axios from "axios";
 
 function Login() {
+  //using navigate package from "react-router-dom" for sending to other page after login....
   const navigate = useNavigate();
-  // Declare state variables for email and password using useState hook
+  // Declare state variables for email and password using useState hook...
   //state variable for storing login email
   const [email, setEmail] = useState("");
   //state for storing password used during login..
   const [password, setPassword] = useState("");
-  //state variable for storing registering email
-  const [registerEmail, setRegisterEmail] = useState("");
   //state variable for storing name used during registration
-  const [registerName, setRegisterName] = useState("");
-  //state variable for storing registration password
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [name, setRegisterName] = useState("");
   //this is a token used for performing conditional rendering for login and signup page
   const [token, setToken] = useState(true);
   //this is form logging out error based on input using regex
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-  const [nameError,setNameError] = useState("");
+  const [nameError, setNameError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   // Define functions to update(using state) email and password incase of login
   function handleEmailChange(event) {
@@ -39,13 +37,14 @@ function Login() {
     event.preventDefault();
     setRegisterName(event.target.value);
   }
+  //
   function handleRegisterEmail(event) {
     event.preventDefault();
-    setRegisterEmail(event.target.value);
+    setEmail(event.target.value);
   }
   function handleRegisterPassword(event) {
     event.preventDefault();
-    setRegisterPassword(event.target.value);
+    setPassword(event.target.value);
   }
   // Define function to handle form submission(incase of login)
   function handleSubmitLogin(event) {
@@ -64,58 +63,89 @@ function Login() {
       setErrorEmail("Email is invalid");
       return;
     }
-    
+
     if (password.length < 8) {
       setErrorPassword("Password must be at least 8 characters long Atleast.");
       return;
     }
+    if (password.length >= 8) {
+      setErrorPassword("");
+    }
 
     //performing login using the axios...
-    axios.post("https://7c63-49-249-44-114.in.ngrok.io/app/v1/login", { email, password })
-    .then((response) => {
-      console.log(response.data);
-      navigate('/dashboard');
-    })
-    .catch((error) => {
-      console.log(error.response.data.message);
-      setErrorMessage(error.response.data.message);
-    });
+    axios
+      .post("https://e604-49-249-44-114.in.ngrok.io/api/v1/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log("api me gaya data")
+        console.log(response.data);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log("api me eeror aa data")
+        // console.log(error.response.data.message);
+        setErrorMessage(error.response.data.message);
+        console.log(errorMessage);
+      });
     // Log email and password values to console
     console.log(`Login Email: ${email}, LoginPassword: ${password}`);
   }
 
   //define a function fot handling for submission incase of registration page..
   function handleSubmitRegister(event) {
+    console.log("submission clicked");
     event.preventDefault();
     const nameRegex = /^[A-Za-z\s]+$/i;
-    if(!nameRegex.test(registerName))
-    {
-      setNameError("Name should be alphabets only")
+    if (!nameRegex.test(name)) {
+      setNameError("Name should be alphabets only");
     }
     const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(registerEmail)) {
+    if (!emailRegex.test(email)) {
       setErrorEmail("Email is invalid");
       return;
     }
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-    if(!passwordRegex.test(registerPassword)){
-      setErrorPassword("Password must be of 8 digit,including 1digit,1 lowercase,1 uppercase letter")
-    }
+    //if lenght of password is  smaller than 8 then  api me nhi jayga
     if (password.length < 8) {
-      setErrorPassword("Password must be at least 8 characters long Atleast.");
+      setErrorPassword("Password must be at least 8 characters long.");
       return;
     }
+    if (password.length >= 8) {
+      setErrorPassword("");
+    }
+
+    axios
+      .post("https://e604-49-249-44-114.in.ngrok.io/api/v1/register", {
+        name,
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log("api me gaya data")
+        console.log(response.data);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log("api me error aa gaya")
+        console.log(error.response.data.message);
+        setErrorMessage(error.response.data.message);
+        console.log(errorMessage);
+      });
+
     // Log email and password values to console
     console.log(
-      ` Register Name: ${registerName} ,Register Email: ${registerEmail},Register Password: ${registerPassword}`
+      ` Register Name: ${name} ,Register Email: ${email},Register Password: ${password}`
     );
   }
   //this is for changing value of token ,for rendering
   function handleRegisterButtonClick(event) {
     event.preventDefault();
-    setErrorPassword("")
-    setErrorEmail("")
-    setNameError("")
+    setErrorPassword("");
+    setErrorEmail("");
+    setNameError("");
+    setEmail("");
+    setPassword("");
     setToken((prevState) => !prevState);
   }
 
@@ -133,7 +163,6 @@ function Login() {
             <label>Email</label>
             <input
               required
-              id="input"
               maxlength="40"
               class="form-control"
               type="email"
@@ -142,17 +171,13 @@ function Login() {
               value={email}
               onChange={handleEmailChange}
             />
-            <div className="warning">
-            {errorEmail}
-            </div>
-            
+            <div className="warning">{errorEmail}</div>
           </div>
           {/* Password input field */}
           <div className="form-group">
             <label>Password</label>
             <input
               required
-              id="input"
               maxlength="25"
               class="form-control"
               type="password"
@@ -161,10 +186,7 @@ function Login() {
               value={password}
               onChange={handlePasswordChange}
             />
-             <div className="warning">
-             {errorPassword}
-            </div>
-           
+            <div className="warning">{errorPassword}</div>
           </div>
           {/* Submit button */}
           <div>
@@ -194,36 +216,30 @@ function Login() {
             <label>Name</label>
             <input
               required
-              id="input"
               maxlength="40"
               class="form-control"
               type="text"
               className="form-control"
               placeholder="Enter Name"
-              value={registerName}
+              value={name}
               onChange={handleRegisterName}
             />
-               <div className="warning">
-             {nameError}
-            </div>
+            <div className="warning">{nameError}</div>
           </div>
 
           <div className="form-group">
             <label>Email</label>
             <input
               required
-              id="input"
               maxlength="40"
               class="form-control"
               type="email"
               className="form-control"
               placeholder="Enter Email"
-              value={registerEmail}
+              value={email}
               onChange={handleRegisterEmail}
             />
-               <div className="warning">
-             {errorEmail}
-            </div>
+            <div className="warning">{errorEmail}</div>
           </div>
 
           {/* Password input field */}
@@ -237,15 +253,13 @@ function Login() {
               type="password"
               className="form-control"
               placeholder="Enter password"
-              value={registerPassword}
+              value={password}
               onChange={handleRegisterPassword}
             />
-                   <div className="warning">
-             {errorPassword}
-            </div>
+            <div className="warning">{errorPassword}</div>
           </div>
           {/* Submit button */}
-          <div >
+          <div>
             <button id="loginButton" class="btn btn-block btn-lg btn-danger">
               <span class="glyphicon glyphicon-arrow-right"></span> Register
             </button>
