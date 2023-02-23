@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+
 function Login() {
+  const navigate = useNavigate();
   // Declare state variables for email and password using useState hook
   //state variable for storing login email
   const [email, setEmail] = useState("");
@@ -70,6 +74,7 @@ function Login() {
     axios.post("https://7c63-49-249-44-114.in.ngrok.io/app/v1/login", { email, password })
     .then((response) => {
       console.log(response.data);
+      navigate('/dashboard');
     })
     .catch((error) => {
       console.log(error.response.data.message);

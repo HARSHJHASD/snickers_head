@@ -1,7 +1,7 @@
 import React from "react";
 import "./Shoes.css";
 import LOGO from '../../images/LOGO.PNG';
-import nike199 from '../../images/nike199.png'
+
 
 const Shoes = () => {
   return (

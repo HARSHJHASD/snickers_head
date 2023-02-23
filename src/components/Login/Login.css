@@ -27,6 +27,7 @@
   width: 350px;
 }
 #register{
-margin-left: 10rem;
+/* margin-left: 10rem; */
+float: right;
 }
 
