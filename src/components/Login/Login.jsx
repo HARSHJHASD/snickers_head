@@ -4,9 +4,9 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 //just to handle api
 import axios from "axios";
+import RoutesFile from "../RoutesFile";
 
-function Login({setIsAuthenticated}) {
-
+function Login({ setIsAuthenticated }) {
   //using navigate package from "react-router-dom" for sending to other page after login....
   const navigate = useNavigate();
   // Declare state variables for email and password using useState hook...
@@ -23,6 +23,7 @@ function Login({setIsAuthenticated}) {
   const [errorPassword, setErrorPassword] = useState("");
   const [nameError, setNameError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [onsuccessfullRegistration,setonsuccessfullRegistration] = useState("");
   // Define functions to update(using state) email and password incase of login
   function handleEmailChange(event) {
     event.preventDefault();
@@ -75,18 +76,18 @@ function Login({setIsAuthenticated}) {
 
     //performing login using the axios...
     axios
-      .post("https://e604-49-249-44-114.in.ngrok.io/api/v1/login", {
+      .post("https://4948-49-249-44-114.in.ngrok.io/api/v1/login", {
         email,
         password,
       })
       .then((response) => {
-        console.log("api me gaya data")
+        console.log("api me gaya data");
         console.log(response.data.success);
         setIsAuthenticated(response.data.success);
         navigate("/dashboard");
       })
       .catch((error) => {
-        console.log("api me eeror aa data")
+        console.log("api me eeror aa data");
         // console.log(error.response.data.message);
         setErrorMessage(error.response.data.message);
         console.log(errorMessage);
@@ -116,23 +117,31 @@ function Login({setIsAuthenticated}) {
     if (password.length >= 8) {
       setErrorPassword("");
     }
-
+    ///this api is for registering.././...
     axios
-      .post("https://e604-49-249-44-114.in.ngrok.io/api/v1/register", {
+      .post("https://9630-49-249-44-114.in.ngrok.io/api/v1/register", {
         name,
         email,
         password,
       })
       .then((response) => {
-        console.log("api me gaya data")
-        console.log(response.data);
+        console.log("api me gaya data");
+        const baseURL = "https://9630-49-249-44-114.in.ngrok.io/api/v1/verify";
+        const uniqueToken = response.data.user.newtoken;
+        const uniqueId = response.data.user._id;
+        const url = `${baseURL}/${uniqueId}/${uniqueToken}`;
+        const sendUrltoRouteFile =`/${uniqueId}/${uniqueToken}`;
+        setonsuccessfullRegistration(sendUrltoRouteFile);
+        // console.log(response.data.user.is_verified);
+        <RoutesFile onsuccessfullRegistration={onsuccessfullRegistration}/>
+        console.log(url);
         navigate("/dashboard");
       })
+
       .catch((error) => {
-        console.log("api me error aa gaya")
+        console.log("api me error aa gaya");
         console.log(error.response.data.message);
         setErrorMessage(error.response.data.message);
-        
       });
 
     // Log email and password values to console
