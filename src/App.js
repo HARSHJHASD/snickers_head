@@ -3,6 +3,8 @@ import React,{useState} from "react";
 import RoutesFile from "./components/RoutesFile";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import EmailVerification from "./components/EmailVerification";
+
 const App = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false); 
@@ -10,6 +12,7 @@ const App = () => {
   return (
     <div>
      <RoutesFile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+     <EmailVerification/>
     </div>
   );
 };

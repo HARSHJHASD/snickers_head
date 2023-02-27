@@ -8,5 +8,4 @@ const SuccessfullRegistration = () => {
     </div>
   )
 }
-
 export default SuccessfullRegistration

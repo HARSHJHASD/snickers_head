@@ -4,7 +4,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 //just to handle api
 import axios from "axios";
-import RoutesFile from "../RoutesFile";
+
 
 function Login({ setIsAuthenticated }) {
   //using navigate package from "react-router-dom" for sending to other page after login....
@@ -23,7 +23,10 @@ function Login({ setIsAuthenticated }) {
   const [errorPassword, setErrorPassword] = useState("");
   const [nameError, setNameError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [onsuccessfullRegistration,setonsuccessfullRegistration] = useState("");
+  
+
+
+
   // Define functions to update(using state) email and password incase of login
   function handleEmailChange(event) {
     event.preventDefault();
@@ -48,6 +51,10 @@ function Login({ setIsAuthenticated }) {
     event.preventDefault();
     setPassword(event.target.value);
   }
+
+
+
+
   // Define function to handle form submission(incase of login)
   function handleSubmitLogin(event) {
     // Prevent default form submission behavior
@@ -74,9 +81,13 @@ function Login({ setIsAuthenticated }) {
       setErrorPassword("");
     }
 
+
+
+
+
     //performing login using the axios...
     axios
-      .post("https://4948-49-249-44-114.in.ngrok.io/api/v1/login", {
+      .post("https://a946-49-249-44-114.in.ngrok.io/api/v1/login", {
         email,
         password,
       })
@@ -95,6 +106,12 @@ function Login({ setIsAuthenticated }) {
     // Log email and password values to console
     console.log(`Login Email: ${email}, LoginPassword: ${password}`);
   }
+
+
+
+
+
+
 
   //define a function fot handling for submission incase of registration page..
   function handleSubmitRegister(event) {
@@ -117,24 +134,19 @@ function Login({ setIsAuthenticated }) {
     if (password.length >= 8) {
       setErrorPassword("");
     }
+
     ///this api is for registering.././...
     axios
-      .post("https://9630-49-249-44-114.in.ngrok.io/api/v1/register", {
+      .post("https://a946-49-249-44-114.in.ngrok.io/api/v1/register", {
         name,
         email,
         password,
       })
       .then((response) => {
         console.log("api me gaya data");
-        const baseURL = "https://9630-49-249-44-114.in.ngrok.io/api/v1/verify";
-        const uniqueToken = response.data.user.newtoken;
-        const uniqueId = response.data.user._id;
-        const url = `${baseURL}/${uniqueId}/${uniqueToken}`;
-        const sendUrltoRouteFile =`/${uniqueId}/${uniqueToken}`;
-        setonsuccessfullRegistration(sendUrltoRouteFile);
+        console.log(response.data);
         // console.log(response.data.user.is_verified);
-        <RoutesFile onsuccessfullRegistration={onsuccessfullRegistration}/>
-        console.log(url);
+        // console.log(response.data.user.newtoken);
         navigate("/dashboard");
       })
 
@@ -149,6 +161,10 @@ function Login({ setIsAuthenticated }) {
       ` Register Name: ${name} ,Register Email: ${email},Register Password: ${password}`
     );
   }
+
+
+
+
   //this is for changing value of token ,for rendering
   function handleRegisterButtonClick(event) {
     event.preventDefault();
@@ -159,6 +175,9 @@ function Login({ setIsAuthenticated }) {
     setPassword("");
     setToken((prevState) => !prevState);
   }
+
+
+
 
   // Render the login form,when the page loads up an d  token value is "true"
   if (token) {
@@ -212,6 +231,9 @@ function Login({ setIsAuthenticated }) {
       </div>
     );
   }
+
+
+
 
   // Render the login form,when the page loads up an d  token value is "
   if (!token) {
