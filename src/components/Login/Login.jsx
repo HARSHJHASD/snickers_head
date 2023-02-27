@@ -31,25 +31,64 @@ function Login({ setIsAuthenticated }) {
   function handleEmailChange(event) {
     event.preventDefault();
     setEmail(event.target.value);
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      setErrorEmail("Email is invalid");
+      return;
+    }else{
+      setErrorEmail("");
+    }
+
   }
   // /we are handling password change ,as user is entering password
   function handlePasswordChange(event) {
     event.preventDefault();
     setPassword(event.target.value);
+    if (password.length < 8) {
+      setErrorPassword("Password must be at least 8 characters long.");
+      return;
+    }
+    if (password.length >= 8) {
+      setErrorPassword("");
+    }
   }
   //define and handle email,name ,password incase of registration ..(using usestate)
   function handleRegisterName(event) {
+
     event.preventDefault();
     setRegisterName(event.target.value);
+    const nameRegex = /^[A-Za-z\s]+$/i;
+    if (!nameRegex.test(name)) {
+      setNameError("Name should be alphabets only");
+      return;
+    }
+    else{
+      setNameError("");
+    }
+
   }
   //
   function handleRegisterEmail(event) {
     event.preventDefault();
     setEmail(event.target.value);
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      setErrorEmail("Email is invalid");
+      return;
+    }else{
+      setErrorEmail("");
+    }
   }
   function handleRegisterPassword(event) {
     event.preventDefault();
     setPassword(event.target.value);
+    if (password.length < 8) {
+      setErrorPassword("Password must be at least 8 characters long.");
+      return;
+    }
+    if (password.length >= 8) {
+      setErrorPassword("");
+    }
   }
 
 
@@ -87,7 +126,7 @@ function Login({ setIsAuthenticated }) {
 
     //performing login using the axios...
     axios
-      .post("https://a946-49-249-44-114.in.ngrok.io/api/v1/login", {
+      .post("http://192.168.11.102:3000/api/v1/login", {
         email,
         password,
       })
@@ -117,15 +156,19 @@ function Login({ setIsAuthenticated }) {
   function handleSubmitRegister(event) {
     console.log("submission clicked");
     event.preventDefault();
+
     const nameRegex = /^[A-Za-z\s]+$/i;
     if (!nameRegex.test(name)) {
       setNameError("Name should be alphabets only");
+      return;
     }
+
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
       setErrorEmail("Email is invalid");
       return;
     }
+
     //if lenght of password is  smaller than 8 then  api me nhi jayga
     if (password.length < 8) {
       setErrorPassword("Password must be at least 8 characters long.");
@@ -137,7 +180,7 @@ function Login({ setIsAuthenticated }) {
 
     ///this api is for registering.././...
     axios
-      .post("https://a946-49-249-44-114.in.ngrok.io/api/v1/register", {
+      .post("http://192.168.11.102:3000/api/v1/register", {
         name,
         email,
         password,
@@ -173,6 +216,7 @@ function Login({ setIsAuthenticated }) {
     setNameError("");
     setEmail("");
     setPassword("");
+    setNameError("");
     setToken((prevState) => !prevState);
   }
 
@@ -233,8 +277,7 @@ function Login({ setIsAuthenticated }) {
   }
 
 
-
-
+//this is for registration..
   // Render the login form,when the page loads up an d  token value is "
   if (!token) {
     return (

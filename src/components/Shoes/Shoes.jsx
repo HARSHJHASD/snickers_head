@@ -2,7 +2,6 @@ import React from "react";
 import "./Shoes.css";
 import LOGO from '../../images/LOGO.PNG';
 
-
 const Shoes = () => {
   return (
     <div>

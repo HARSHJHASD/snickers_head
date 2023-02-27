@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import FirstPage from './FirstPage';
 import Dashboard from './Dashboard/Dashboard';
 import PrivateRoute from './PrivateRoute';
+import SuccessfullRegistration from './SuccessfullRegistration/SuccessfullRegistration'
 const RoutesFile = ({isAuthenticated,setIsAuthenticated}) => {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<FirstPage setIsAuthenticated={setIsAuthenticated}/>} />
-
+        <Route exact path="/success" element={<SuccessfullRegistration />} />
         {/* this  is route that will depend on whether the user is logged in or not. if not logged in then the state value we get is false,else true */}
         {/* on path /dashboard we will render element based on value os isAuthenticated. */}
         <Route exact path="/dashboard" element={<PrivateRoute Component={Dashboard} auth={isAuthenticated} />} />

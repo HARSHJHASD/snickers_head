@@ -20,12 +20,19 @@ const EmailVerification = () => {
     if (verificationLink.includes('/api/v1/verify/') && verificationToken) {
       //In the code snippet provided, it's possible that the axios.post method is
       // not returning a promise,
-      axios.get(`/api/v1/verify/${verificationId}${verificationToken}`)
-      console.log(`/api/v1/verify/${verificationId}${verificationToken}`)
-        .then(() =>
+    axios.get(`http://192.168.11.102:3000/api/v1/verify/${verificationId}/${verificationToken}`)
+      // console.log(`/api/v1/verify/${verificationId}${verificationToken}`)
+    //  if(getBack)
+    //  {
+    //   console.log("getback is working")
+    //    setIsVerified(true);
+    //  }
+    
+        .then((data) =>
         {
+          console.log("data is ",data);
           setIsVerified(true);
-          console.log("axios.post ka then run nahi kar gya")
+          console.log("axios.post ka then run kar gya")
           console.log("then block chala ,is_verified ki value true ho gy")
         })
         .catch(()=>{
